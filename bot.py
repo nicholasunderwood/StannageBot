@@ -29,6 +29,6 @@ async def update(ctx, msg='stannge is live!'):
         return
 
     msg = '@everyone ' + msg + ' https://www.twitch.tv/stannage'
-    await client.target_channel.send('Stannage is Live! https://www.twitch.tv/stannage')
+    await client.target_channel.send(msg)
 
 client.run(TOKEN)
