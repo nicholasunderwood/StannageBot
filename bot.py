@@ -15,7 +15,7 @@ async def on_ready():
     client.target_channel = client.get_channel(817324280651186186)
 
 
-@client.command(name='live', help='Sends message to secified channel with costom message')
+@client.command(name='twitch', help='Sends a message to stannage\'s live channel with the twitch link')
 async def update(ctx, msg='stannge is live!'):
     print(msg)
 
@@ -28,7 +28,21 @@ async def update(ctx, msg='stannge is live!'):
         print('not from correct person')
         return
 
-    msg = '@everyone ' + msg + ' https://www.twitch.tv/stannage'
+    await client.target_channel.send(msg + ' https://www.twitch.tv/stannage')
+
+@client.command(name='live', help='Sends a message to stannage\'s live channel')
+async def update(ctx, msg):
+    print(msg)
+
+    if not isinstance(ctx.channel, discord.channel.DMChannel):
+        print('not dm')
+        return
+
+
+    if(ctx.author.id != 306970895988162572 and ctx.author.id != 328589466388267018):
+        print('not from correct person')
+        return
+
     await client.target_channel.send(msg)
 
 client.run(TOKEN)
