@@ -12,7 +12,7 @@ client = commands.Bot(command_prefix='$')
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    client.target_channel = client.get_channel(810301593849167873)
+    client.target_channel = client.get_channel(817324280651186186)
 
 
 @client.command(name='live', help='Sends message to secified channel with costom message')
