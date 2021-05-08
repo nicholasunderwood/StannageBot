@@ -31,6 +31,9 @@ async def on_message(msg):
 
     if(msg.content[1::] in client.custom_commands.keys()):
         await msg.channel.send(client.custom_commands[key])
+    else:
+        await client.process_commands(msg)
+
         
 
 
@@ -66,6 +69,7 @@ async def live(ctx, msg):
 
 @client.command(name='addcommand', help='adds a command')
 async def addcommand(ctx, call, response):
+    print(call + ' ' + response)
 
     if not isinstance(ctx.channel, discord.channel.DMChannel):
         print('not dm')
@@ -83,5 +87,7 @@ async def addcommand(ctx, call, response):
 
     with open('commands.json','w') as outfile:
         json.dump(client.custom_commands, outfile)
+
+    await ctx.channel.send("command added")
 
 client.run(TOKEN)
